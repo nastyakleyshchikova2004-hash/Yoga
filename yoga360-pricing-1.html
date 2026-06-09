@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yoga 360 — Program Pricing | Northern Cyprus</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sand: #F5EFE0; --cream: #FAF7F2; --linen: #EDE5D4;
+    --gold: #B8943F; --gold-light: #D4AF6A; --terracotta: #C4704A;
+    --sage: #7A8C6E; --deep: #1E2318; --charcoal: #3A3A35; --muted: #7A756A;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--cream); font-family:'Jost',sans-serif; color:var(--deep); font-weight:300; line-height:1.7; }
+
+  .cover { background:var(--deep); color:var(--sand); padding:80px 60px 60px; position:relative; overflow:hidden; min-height:340px; display:flex; flex-direction:column; justify-content:space-between; }
+  .cover::before { content:''; position:absolute; top:-120px; right:-120px; width:520px; height:520px; border-radius:50%; background:radial-gradient(circle,rgba(184,148,63,0.18) 0%,transparent 70%); }
+  .cover-top { display:flex; justify-content:space-between; align-items:flex-start; }
+  .logo-text { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; letter-spacing:0.15em; text-transform:uppercase; }
+  .logo-sub { font-size:11px; letter-spacing:0.3em; color:var(--gold-light); text-transform:uppercase; margin-top:4px; }
+  .doc-tag { font-size:10px; letter-spacing:0.25em; color:var(--gold); text-transform:uppercase; border:1px solid rgba(184,148,63,0.4); padding:6px 14px; border-radius:2px; }
+  .cover-title { font-family:'Cormorant Garamond',serif; font-size:52px; font-weight:300; line-height:1.1; margin-top:40px; max-width:700px; }
+  .cover-title em { font-style:italic; color:var(--gold-light); }
+  .cover-meta { display:flex; gap:48px; margin-top:40px; padding-top:32px; border-top:1px solid rgba(245,239,224,0.15); font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:rgba(245,239,224,0.5); }
+  .cover-meta span { color:var(--sand); }
+
+  .page { max-width:1100px; margin:0 auto; padding:70px 60px; }
+  .divider { display:flex; align-items:center; gap:20px; margin:48px 0 40px; }
+  .divider-line { flex:1; height:1px; background:var(--linen); }
+  .divider-diamond { width:8px; height:8px; background:var(--gold); transform:rotate(45deg); }
+  .section-label { font-size:10px; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+  .section-title { font-family:'Cormorant Garamond',serif; font-size:36px; font-weight:400; line-height:1.15; color:var(--deep); }
+
+  .overview-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-top:36px; border:1px solid var(--linen); }
+  .overview-box { background:#fff; padding:32px 36px; }
+  .overview-box:nth-child(3),.overview-box:nth-child(4) { border-top:1px solid var(--linen); }
+  .overview-box:nth-child(odd) { border-right:1px solid var(--linen); }
+  .ob-label { font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
+  .ob-value { font-family:'Cormorant Garamond',serif; font-size:42px; font-weight:300; color:var(--deep); line-height:1; }
+  .ob-value sup { font-size:22px; vertical-align:super; }
+  .ob-desc { font-size:12px; color:var(--muted); margin-top:8px; }
+
+  .programs-grid { display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:36px; }
+  .program-card { border:1px solid var(--linen); background:#fff; overflow:hidden; }
+  .program-card.premium { border-color:var(--gold); }
+  .pc-header { padding:28px 32px 24px; border-bottom:1px solid var(--linen); position:relative; }
+  .program-card.premium .pc-header { border-bottom-color:rgba(184,148,63,0.3); }
+  .pc-badge { font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+  .premium .pc-badge { color:var(--gold); }
+  .pc-name { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:400; line-height:1.1; }
+  .pc-duration { font-size:12px; color:var(--muted); margin-top:6px; }
+  .pc-price-tag { position:absolute; top:28px; right:32px; text-align:right; }
+  .pc-price-value { font-family:'Cormorant Garamond',serif; font-size:38px; font-weight:300; color:var(--deep); line-height:1; }
+  .premium .pc-price-value { color:var(--gold); }
+  .pc-price-label { font-size:10px; color:var(--muted); letter-spacing:0.1em; }
+  .pc-body { padding:24px 32px 28px; }
+  .pc-includes-title { font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--muted); margin-bottom:14px; }
+  .pc-item { display:flex; align-items:flex-start; gap:12px; margin-bottom:9px; font-size:13px; color:var(--charcoal); }
+  .pc-item-dot { width:5px; height:5px; border-radius:50%; background:var(--sage); margin-top:7px; flex-shrink:0; }
+  .premium .pc-item-dot { background:var(--gold); }
+
+  /* BREAKDOWN */
+  .breakdown-wrap { margin-top:36px; display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+  .breakdown-card { border:1px solid var(--linen); background:#fff; }
+  .breakdown-card.premium { border-color:var(--gold); }
+  .bk-title { padding:20px 28px 16px; border-bottom:1px solid var(--linen); font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:400; display:flex; justify-content:space-between; align-items:center; }
+  .bk-title-price { font-size:24px; color:var(--gold); }
+  .shared-note { font-size:11px; color:var(--muted); font-style:italic; padding:6px 28px 10px; border-bottom:1px solid var(--linen); background:var(--cream); }
+  .bk-table { width:100%; border-collapse:collapse; }
+  .bk-table tr { border-bottom:1px solid var(--linen); }
+  .bk-table tr:last-child { border-bottom:none; }
+  .bk-table td { padding:11px 28px; font-size:12.5px; }
+  .bk-table td:first-child { color:var(--charcoal); }
+  .bk-table td:last-child { text-align:right; font-weight:500; color:var(--deep); white-space:nowrap; }
+  .bk-cat { padding:8px 28px 4px; font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--muted); background:var(--cream); }
+  .bk-table tr.subtotal td { background:rgba(237,229,212,0.5); font-weight:500; font-size:12px; }
+  .bk-table tr.subtotal td:last-child { color:var(--charcoal); }
+  .bk-table tr.total { background:var(--linen); }
+  .bk-table tr.total td { font-weight:600; font-size:13px; }
+  .bk-table tr.profit td:last-child { color:var(--sage); font-weight:600; }
+  .bk-table tr.profit-p td:last-child { color:var(--gold); font-weight:600; }
+  /* fixed cost rows */
+  .bk-table tr.fixed-row td:first-child { color:var(--muted); font-size:12px; }
+  .bk-table tr.fixed-row td:last-child { color:var(--muted); }
+  .fixed-label { display:inline-block; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; background:rgba(184,148,63,0.1); color:var(--gold); padding:1px 6px; border-radius:2px; margin-left:6px; vertical-align:middle; }
+
+  /* MARGIN */
+  .margin-grid { display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:28px; }
+  .margin-card { background:#fff; border:1px solid var(--linen); padding:28px 32px; }
+  .margin-card.premium { border-color:var(--gold); }
+  .margin-label { font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:var(--muted); margin-bottom:16px; }
+  .margin-bar-bg { height:6px; background:var(--linen); border-radius:3px; margin:10px 0 6px; overflow:hidden; }
+  .margin-bar-fill { height:100%; border-radius:3px; background:var(--sage); }
+  .premium .margin-bar-fill { background:var(--gold); }
+  .margin-legend { display:flex; justify-content:space-between; font-size:11px; color:var(--muted); margin-top:4px; }
+  .margin-big { font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:300; line-height:1; }
+  .margin-big span { font-size:22px; vertical-align:super; }
+
+  /* FIXED COSTS BOX */
+  .fixed-costs-box { margin-top:28px; border:1px solid var(--linen); background:#fff; }
+  .fcb-header { padding:18px 28px; border-bottom:1px solid var(--linen); font-family:'Cormorant Garamond',serif; font-size:20px; display:flex; justify-content:space-between; align-items:center; }
+  .fcb-note { font-size:11px; color:var(--muted); font-style:italic; }
+  .fcb-grid { display:grid; grid-template-columns:1fr 1fr 1fr; border-top:none; }
+  .fcb-item { padding:20px 28px; border-right:1px solid var(--linen); border-bottom:1px solid var(--linen); }
+  .fcb-item:nth-child(3n) { border-right:none; }
+  .fcb-item:nth-last-child(-n+3) { border-bottom:none; }
+  .fcb-item-label { font-size:9px; letter-spacing:0.25em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+  .fcb-item-value { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; color:var(--deep); line-height:1; }
+  .fcb-item-value sup { font-size:14px; vertical-align:super; }
+  .fcb-item-desc { font-size:11.5px; color:var(--charcoal); margin-top:6px; line-height:1.5; }
+  .fcb-item-calc { font-size:10.5px; color:var(--muted); margin-top:4px; }
+
+  /* SCALE TABLE */
+  .scale-table-wrap { margin-top:28px; overflow-x:auto; }
+  .scale-table { width:100%; border-collapse:collapse; font-size:13px; }
+  .scale-table th { background:var(--deep); color:var(--sand); padding:12px 20px; font-weight:400; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; text-align:right; }
+  .scale-table th:first-child { text-align:left; }
+  .scale-table td { padding:12px 20px; border-bottom:1px solid var(--linen); text-align:right; color:var(--charcoal); }
+  .scale-table td:first-child { text-align:left; color:var(--deep); }
+  .scale-table tr:nth-child(even) td { background:rgba(237,229,212,0.3); }
+  .scale-table .hl td { background:rgba(184,148,63,0.08) !important; font-weight:500; }
+  .scale-table .tr-total td { background:var(--linen) !important; font-weight:600; font-size:13.5px; color:var(--deep); }
+  .green { color:var(--sage); } .gold-c { color:var(--gold); font-weight:500; }
+
+  .notes-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; margin-top:28px; }
+  .note-card { background:#fff; border:1px solid var(--linen); padding:24px 26px; }
+  .note-card-num { font-family:'Cormorant Garamond',serif; font-size:40px; font-weight:300; color:var(--linen); line-height:1; margin-bottom:10px; }
+  .note-card-title { font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+  .note-card-text { font-size:12.5px; color:var(--charcoal); line-height:1.6; }
+
+  .gold-stripe { height:3px; background:linear-gradient(90deg,var(--gold) 0%,var(--gold-light) 50%,var(--terracotta) 100%); }
+  .footer { background:var(--deep); color:rgba(245,239,224,0.4); padding:28px 60px; display:flex; justify-content:space-between; align-items:center; font-size:11px; letter-spacing:0.1em; }
+  .footer strong { color:var(--gold-light); font-weight:400; }
+</style>
+</head>
+<body>
+
+<div class="gold-stripe"></div>
+
+<div class="cover">
+  <div class="cover-top">
+    <div>
+      <div class="logo-text">Yoga 360</div>
+      <div class="logo-sub">Northern Cyprus · Mediterranean</div>
+    </div>
+    <div class="doc-tag">Confidential · CFO Review</div>
+  </div>
+  <div>
+    <div class="cover-title">Program Pricing<br>&amp; Cost Structure<br><em>Northern Cyprus 2025–2026</em></div>
+    <div class="cover-meta">
+      <div>Prepared · <span>June 2026</span></div>
+      <div>Programs · <span>2 formats</span></div>
+      <div>Currency · <span>EUR (€)</span></div>
+      <div>Status · <span>Pending Approval</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- 01 OVERVIEW -->
+  <div class="section-label">01 — Project Overview</div>
+  <div class="section-title">Concept &amp; Market Position</div>
+  <p style="margin-top:20px;max-width:780px;font-size:14px;color:var(--charcoal);line-height:1.8;">
+    Yoga 360 offers immersive yoga retreats hosted in a private villa on the Mediterranean coast of Northern Cyprus. The shared villa model delivers a premium boutique feel at a fraction of the cost of traditional per-room hotel booking. The wellness retreat market in Cyprus ranges from <strong>$380 to $3,300 per person</strong>; Yoga 360 occupies the <em>premium value</em> segment with two clearly differentiated formats targeting different audiences and booking windows.
+  </p>
+
+  <div class="overview-grid">
+    <div class="overview-box">
+      <div class="ob-label">Signature Program</div>
+      <div class="ob-value"><sup>€</sup>1,500</div>
+      <div class="ob-desc">Full immersive retreat · 7 nights · all-inclusive villa</div>
+    </div>
+    <div class="overview-box">
+      <div class="ob-label">Express Program</div>
+      <div class="ob-value"><sup>€</sup>300</div>
+      <div class="ob-desc">Weekend mini-retreat · 3 days / 2 nights · villa stay</div>
+    </div>
+    <div class="overview-box">
+      <div class="ob-label">Villa Rate (whole group)</div>
+      <div class="ob-value"><sup>€</sup>300</div>
+      <div class="ob-desc">Per night · private villa · pool, garden, fruit trees, near beach</div>
+    </div>
+    <div class="overview-box">
+      <div class="ob-label">Cyprus Market Range</div>
+      <div class="ob-value"><sup>$</sup>380–3,300</div>
+      <div class="ob-desc">Comparable programs — Tripaneer, BookRetreats, Retreat.guru 2025</div>
+    </div>
+  </div>
+
+  <!-- 02 PROGRAMS -->
+  <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+  <div class="section-label">02 — Program Contents</div>
+  <div class="section-title">What Each Format Includes</div>
+
+  <div class="programs-grid">
+    <div class="program-card">
+      <div class="pc-header">
+        <div class="pc-badge">Signature Program · Flagship Format</div>
+        <div class="pc-name">Yoga 360<br>Full Retreat</div>
+        <div class="pc-duration">7 nights · group of 10–12 participants</div>
+        <div class="pc-price-tag">
+          <div class="pc-price-value">€1,500</div>
+          <div class="pc-price-label">per person</div>
+        </div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-includes-title">Included in price</div>
+        <div class="pc-item"><div class="pc-item-dot"></div>Shared private villa · 7 nights · pool, sun loungers, fruit garden</div>
+        <div class="pc-item"><div class="pc-item-dot"></div>Full board daily: breakfast, lunch &amp; dinner — salmon &amp; red fish, chicken, greens, fresh fruit smoothies</div>
+        <div class="pc-item"><div class="pc-item-dot"></div>14 yoga sessions: morning + evening (Hatha, Vinyasa, Nidra · 75 min)</div>
+        <div class="pc-item"><div class="pc-item-dot"></div>Meditation, pranayama &amp; breathwork circles</div>
+        <div class="pc-item"><div class="pc-item-dot"></div>Minivan transport: beach trips &amp; mountain day excursions</div>
+        <div class="pc-item"><div class="pc-item-dot"></div>Welcome dinner &amp; closing ceremony</div>
+        <div class="pc-item"><div class="pc-item-dot"></div>Access to nearby public beach</div>
+      </div>
+    </div>
+
+    <div class="program-card premium">
+      <div class="pc-header">
+        <div class="pc-badge">Express Program · Entry Format</div>
+        <div class="pc-name">Yoga 360<br>Weekend Retreat</div>
+        <div class="pc-duration">3 days / 2 nights · group of 12–15 participants</div>
+        <div class="pc-price-tag">
+          <div class="pc-price-value">€300</div>
+          <div class="pc-price-label">per person</div>
+        </div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-includes-title">Included in price</div>
+        <div class="pc-item"><div class="pc-item-dot"></div>Shared private villa · 2 nights · pool, sun loungers, fruit garden</div>
+        <div class="pc-item"><div class="pc-item-dot"></div>Full board: breakfast, lunch &amp; dinner — fish, greens, fruit smoothies</div>
+        <div class="pc-item"><div class="pc-item-dot"></div>4 yoga sessions: morning + evening (60–75 min each)</div>
+        <div class="pc-item"><div class="pc-item-dot"></div>1 group meditation / breathwork session</div>
+        <div class="pc-item"><div class="pc-item-dot"></div>Minivan for local beach trip</div>
+        <div class="pc-item"><div class="pc-item-dot"></div>Welcome pack (mat, printed materials)</div>
+        <div class="pc-item"><div class="pc-item-dot"></div>Access to nearby public beach</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 FIXED COSTS -->
+  <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+  <div class="section-label">03 — Fixed Costs Per Run</div>
+  <div class="section-title">Costs Shared Across the Whole Group</div>
+  <p style="margin-top:14px;font-size:13px;color:var(--muted);max-width:720px;">These costs are fixed per retreat run regardless of group size. The more participants, the lower the per-person impact.</p>
+
+  <div class="fixed-costs-box">
+    <div class="fcb-header">
+      <span>Signature · Fixed Costs per Run</span>
+      <span class="fcb-note">÷ group size to get per-person impact</span>
+    </div>
+    <div class="fcb-grid">
+      <div class="fcb-item">
+        <div class="fcb-item-label">Villa Rental</div>
+        <div class="fcb-item-value"><sup>€</sup>2,100</div>
+        <div class="fcb-item-desc">7 nights × €300/night</div>
+        <div class="fcb-item-calc">÷10 pax = €210/person</div>
+      </div>
+      <div class="fcb-item">
+        <div class="fcb-item-label">Instructor</div>
+        <div class="fcb-item-value"><sup>€</sup>700</div>
+        <div class="fcb-item-desc">7 days × €100/day</div>
+        <div class="fcb-item-calc">÷10 pax = €70/person</div>
+      </div>
+      <div class="fcb-item">
+        <div class="fcb-item-label">Minivan Hire</div>
+        <div class="fcb-item-value"><sup>€</sup>280</div>
+        <div class="fcb-item-desc">7 days × €40/day</div>
+        <div class="fcb-item-calc">÷10 pax = €28/person</div>
+      </div>
+      <div class="fcb-item">
+        <div class="fcb-item-label">Marketing / Agency</div>
+        <div class="fcb-item-value"><sup>€</sup>400</div>
+        <div class="fcb-item-desc">Advertising agencies, social ads per run</div>
+        <div class="fcb-item-calc">÷10 pax = €40/person</div>
+      </div>
+      <div class="fcb-item">
+        <div class="fcb-item-label">Welcome &amp; Ceremony</div>
+        <div class="fcb-item-value"><sup>€</sup>150</div>
+        <div class="fcb-item-desc">Welcome dinner + closing event</div>
+        <div class="fcb-item-calc">÷10 pax = €15/person</div>
+      </div>
+      <div class="fcb-item">
+        <div class="fcb-item-label">Total Fixed (10 pax)</div>
+        <div class="fcb-item-value" style="color:var(--gold)"><sup>€</sup>3,630</div>
+        <div class="fcb-item-desc">All fixed costs combined</div>
+        <div class="fcb-item-calc" style="color:var(--gold)">÷10 = €363/person</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fixed-costs-box" style="margin-top:16px;">
+    <div class="fcb-header">
+      <span>Express · Fixed Costs per Run</span>
+      <span class="fcb-note">÷ group size to get per-person impact</span>
+    </div>
+    <div class="fcb-grid">
+      <div class="fcb-item">
+        <div class="fcb-item-label">Villa Rental</div>
+        <div class="fcb-item-value"><sup>€</sup>600</div>
+        <div class="fcb-item-desc">2 nights × €300/night</div>
+        <div class="fcb-item-calc">÷12 pax = €50/person</div>
+      </div>
+      <div class="fcb-item">
+        <div class="fcb-item-label">Instructor</div>
+        <div class="fcb-item-value"><sup>€</sup>200</div>
+        <div class="fcb-item-desc">2 days × €100/day</div>
+        <div class="fcb-item-calc">÷12 pax = €17/person</div>
+      </div>
+      <div class="fcb-item">
+        <div class="fcb-item-label">Minivan Hire</div>
+        <div class="fcb-item-value"><sup>€</sup>80</div>
+        <div class="fcb-item-desc">2 days × €40/day</div>
+        <div class="fcb-item-calc">÷12 pax = €7/person</div>
+      </div>
+      <div class="fcb-item">
+        <div class="fcb-item-label">Marketing / Agency</div>
+        <div class="fcb-item-value"><sup>€</sup>200</div>
+        <div class="fcb-item-desc">Advertising agencies, social ads per run</div>
+        <div class="fcb-item-calc">÷12 pax = €17/person</div>
+      </div>
+      <div class="fcb-item">
+        <div class="fcb-item-label">Welcome Pack</div>
+        <div class="fcb-item-value"><sup>€</sup>120</div>
+        <div class="fcb-item-desc">Mats + printed materials (€10 × 12)</div>
+        <div class="fcb-item-calc">€10/person</div>
+      </div>
+      <div class="fcb-item">
+        <div class="fcb-item-label">Total Fixed (12 pax)</div>
+        <div class="fcb-item-value" style="color:var(--gold)"><sup>€</sup>1,200</div>
+        <div class="fcb-item-desc">All fixed costs combined</div>
+        <div class="fcb-item-calc" style="color:var(--gold)">÷12 = €100/person</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 PER-PERSON BREAKDOWN -->
+  <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+  <div class="section-label">04 — Cost &amp; Profit Per Person</div>
+  <div class="section-title">Full Breakdown · Base Case (Signature 10 pax · Express 12 pax)</div>
+
+  <div class="breakdown-wrap">
+
+    <div class="breakdown-card">
+      <div class="bk-title"><span>Signature · €1,500</span><span class="bk-title-price">7 nights</span></div>
+      <div class="shared-note">Shared costs split across 10 participants</div>
+      <table class="bk-table">
+        <tr><td colspan="2" class="bk-cat">Fixed Costs (shared)</td></tr>
+        <tr><td>Villa: €2,100 ÷ 10</td><td>€210</td></tr>
+        <tr><td>Instructor: €700 ÷ 10</td><td>€70</td></tr>
+        <tr><td>Minivan: €280 ÷ 10</td><td>€28</td></tr>
+        <tr><td>Marketing &amp; agencies: €400 ÷ 10</td><td>€40</td></tr>
+        <tr><td>Welcome dinner + ceremony: €150 ÷ 10</td><td>€15</td></tr>
+        <tr class="subtotal"><td>Subtotal — fixed</td><td>€363</td></tr>
+        <tr><td colspan="2" class="bk-cat">Variable Costs (per person)</td></tr>
+        <tr><td>Full board · 7 days × €30/person/day<br><span style="font-size:11px;color:var(--muted);">Fish, red salmon, chicken, greens, smoothie fruits</span></td><td>€210</td></tr>
+        <tr><td>Welcome pack (mat, materials)</td><td>€15</td></tr>
+        <tr><td>Payment processing (~3%)</td><td>€45</td></tr>
+        <tr class="subtotal"><td>Subtotal — variable</td><td>€270</td></tr>
+        <tr class="total"><td>Total cost per person</td><td>€633</td></tr>
+        <tr class="profit"><td><strong>Profit per person</strong></td><td><strong>€867</strong></td></tr>
+      </table>
+    </div>
+
+    <div class="breakdown-card premium">
+      <div class="bk-title"><span>Express · €300</span><span class="bk-title-price">2 nights</span></div>
+      <div class="shared-note">Shared costs split across 12 participants</div>
+      <table class="bk-table">
+        <tr><td colspan="2" class="bk-cat">Fixed Costs (shared)</td></tr>
+        <tr><td>Villa: €600 ÷ 12</td><td>€50</td></tr>
+        <tr><td>Instructor: €200 ÷ 12</td><td>€17</td></tr>
+        <tr><td>Minivan: €80 ÷ 12</td><td>€7</td></tr>
+        <tr><td>Marketing &amp; agencies: €200 ÷ 12</td><td>€17</td></tr>
+        <tr><td>Welcome pack: €10/person</td><td>€10</td></tr>
+        <tr class="subtotal"><td>Subtotal — fixed</td><td>€101</td></tr>
+        <tr><td colspan="2" class="bk-cat">Variable Costs (per person)</td></tr>
+        <tr><td>Full board · 3 days × €30/person/day<br><span style="font-size:11px;color:var(--muted);">Fish, greens, smoothie fruits</span></td><td>€90</td></tr>
+        <tr><td>Payment processing (~3%)</td><td>€9</td></tr>
+        <tr class="subtotal"><td>Subtotal — variable</td><td>€99</td></tr>
+        <tr class="total"><td>Total cost per person</td><td>€200</td></tr>
+        <tr class="profit-p"><td><strong>Profit per person</strong></td><td><strong>€100</strong></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- MARGIN VISUAL -->
+  <div class="margin-grid">
+    <div class="margin-card">
+      <div class="margin-label">Signature · Profit Margin</div>
+      <div class="margin-big">58<span>%</span></div>
+      <div class="margin-bar-bg"><div class="margin-bar-fill" style="width:58%"></div></div>
+      <div class="margin-legend"><span>Cost €633 / person</span><span class="green">Profit €867 / person</span></div>
+    </div>
+    <div class="margin-card premium">
+      <div class="margin-label">Express · Profit Margin</div>
+      <div class="margin-big" style="color:var(--gold)">33<span>%</span></div>
+      <div class="margin-bar-bg"><div class="margin-bar-fill" style="width:33%"></div></div>
+      <div class="margin-legend"><span>Cost €200 / person</span><span class="gold-c">Profit €100 / person</span></div>
+    </div>
+  </div>
+
+  <!-- MARKETING NOTE -->
+  <div style="margin-top:28px;border:1px solid rgba(184,148,63,0.3);background:rgba(184,148,63,0.04);padding:24px 32px;display:grid;grid-template-columns:1fr 1fr;gap:32px;">
+    <div>
+      <div style="font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Marketing &amp; Agency Budget</div>
+      <div style="font-size:13px;color:var(--charcoal);line-height:1.7;">
+        <strong>Signature:</strong> €400 per run — covers social media advertising (Instagram / Facebook), collaboration with wellness &amp; travel agencies, and influencer partnerships. Split per person: €40 at 10 pax.<br><br>
+        <strong>Express:</strong> €200 per run — lighter digital campaign targeting local and regional audiences. Split per person: €17 at 12 pax.
+      </div>
+    </div>
+    <div style="border-left:1px solid rgba(184,148,63,0.2);padding-left:32px;">
+      <div style="font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;">Agency Partnership Model</div>
+      <div style="font-size:13px;color:var(--charcoal);line-height:1.7;">
+        Fixed retainer / campaign fee per retreat run — <em>not</em> a per-person commission. This protects margin as group size grows. Recommended: 1–2 agency partners on a revenue-share or fixed-fee basis per season.<br><br>
+        Agencies can be upsold on branded content and photography from the retreats.
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 SCALE -->
+  <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+  <div class="section-label">05 — Revenue Scenarios</div>
+  <div class="section-title">Revenue &amp; Profit by Group Load</div>
+
+  <div class="scale-table-wrap">
+    <table class="scale-table">
+      <thead>
+        <tr>
+          <th>Scenario</th>
+          <th>Sig. pax</th>
+          <th>Exp. pax</th>
+          <th>Revenue Sig.</th>
+          <th>Revenue Exp.</th>
+          <th>Total Revenue</th>
+          <th>Total Profit</th>
+          <th>Avg. Margin</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Minimum · 1 run each</td>
+          <td>8</td><td>10</td>
+          <td>€12,000</td><td>€3,000</td>
+          <td>€15,000</td>
+          <td class="green">€7,936</td><td>53%</td>
+        </tr>
+        <tr class="hl">
+          <td>Standard · 1 run each <em style="font-size:11px;color:var(--gold)">(base)</em></td>
+          <td>10</td><td>12</td>
+          <td>€15,000</td><td>€3,600</td>
+          <td>€18,600</td>
+          <td class="gold-c">€9,870</td><td>53%</td>
+        </tr>
+        <tr>
+          <td>Full capacity · 1 run each</td>
+          <td>12</td><td>15</td>
+          <td>€18,000</td><td>€4,500</td>
+          <td>€22,500</td>
+          <td class="gold-c">€11,904</td><td>53%</td>
+        </tr>
+        <tr>
+          <td>×2 Signature / month</td>
+          <td>20</td><td>12</td>
+          <td>€30,000</td><td>€3,600</td>
+          <td>€33,600</td>
+          <td class="gold-c">€18,540</td><td>55%</td>
+        </tr>
+        <tr class="tr-total">
+          <td>Annual (×10 months, standard)</td>
+          <td>100</td><td>120</td>
+          <td>€150,000</td><td>€36,000</td>
+          <td>€186,000</td>
+          <td class="gold-c">€98,700</td><td>53%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 06 NOTES -->
+  <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+  <div class="section-label">06 — Key Assumptions</div>
+  <div class="section-title">Financial Notes for CFO</div>
+
+  <div class="notes-grid">
+    <div class="note-card">
+      <div class="note-card-num">01</div>
+      <div class="note-card-title">Villa Model</div>
+      <div class="note-card-text">One private villa for the whole group at €300/night. Pool, sun loungers, fruit garden on-site. Public beach nearby. This is the core cost advantage — per-person accommodation drops to €210 (Signature) vs €50 (Express) at base group size.</div>
+    </div>
+    <div class="note-card">
+      <div class="note-card-num">02</div>
+      <div class="note-card-title">Food Budget</div>
+      <div class="note-card-text">€30/person/day for full board: red fish &amp; salmon, chicken, local greens, seasonal vegetables, and fresh fruits for smoothies. Northern Cyprus local markets deliver premium Mediterranean quality at low cost.</div>
+    </div>
+    <div class="note-card">
+      <div class="note-card-num">03</div>
+      <div class="note-card-title">Transport</div>
+      <div class="note-card-text">Minivan hired at €40/day. For Signature (7 days): €280 total (€28/person). Covers daily beach trips and mountain excursions. For Express (2 days): €80 total (€7/person).</div>
+    </div>
+    <div class="note-card">
+      <div class="note-card-num">04</div>
+      <div class="note-card-title">Marketing &amp; Agencies</div>
+      <div class="note-card-text">Fixed per-run budget: €400 (Signature) and €200 (Express). Covers advertising agencies and social media campaigns. Model is fee-per-run — not per-person commission — protecting margin at full capacity.</div>
+    </div>
+    <div class="note-card">
+      <div class="note-card-num">05</div>
+      <div class="note-card-title">Seasonality</div>
+      <div class="note-card-text">Active season: March–November (10 months). Peak demand: April–May and September–October. Off-peak (July–August heat) can be filled with early-bird pricing at 10% discount with minimal margin impact.</div>
+    </div>
+    <div class="note-card">
+      <div class="note-card-num">06</div>
+      <div class="note-card-title">Express as Funnel</div>
+      <div class="note-card-text">Express (€300) is the entry point. Expected 20–30% conversion to Signature. Each converted participant adds €867 profit. Running Express 2× per month drives both standalone revenue and Signature pipeline.</div>
+    </div>
+  </div>
+
+  <!-- SUMMARY BAR -->
+  <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+  <div style="background:var(--deep);color:var(--sand);padding:44px 48px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;">
+    <div>
+      <div style="font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Signature · Summary</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:300;line-height:1;">€867<br><span style="font-size:18px;opacity:.6;">profit / person</span></div>
+      <div style="font-size:12px;opacity:.5;margin-top:8px;">Margin 58% · 7 nights · 10 pax base</div>
+    </div>
+    <div style="border-left:1px solid rgba(245,239,224,.1);padding-left:40px;">
+      <div style="font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-light);margin-bottom:12px;">Express · Summary</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:300;line-height:1;color:var(--gold-light);">€100<br><span style="font-size:18px;opacity:.6;">profit / person</span></div>
+      <div style="font-size:12px;opacity:.5;margin-top:8px;">Margin 33% · 2 nights · 12 pax base</div>
+    </div>
+    <div style="border-left:1px solid rgba(245,239,224,.1);padding-left:40px;">
+      <div style="font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--sage);margin-bottom:12px;">Annual Forecast</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:300;line-height:1;color:var(--sage);">€99K<br><span style="font-size:18px;opacity:.6;">profit / year</span></div>
+      <div style="font-size:12px;opacity:.5;margin-top:8px;">10 pax Signature + 12 Express × 10 months</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div>Yoga 360 · Northern Cyprus · Pricing Structure 2025–2026</div>
+  <div>Prepared for CFO Review · <strong>Confidential</strong></div>
+  <div>June 2026</div>
+</div>
+
+</body>
+</html>
